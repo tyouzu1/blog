@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Razio">
 <meta property="og:description" content="主要使用 Node.js + Hexo + Next + Github ，其实都很简单，在此只是为了记录一下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-23T09:30:47.902Z">
+<meta property="og:updated_time" content="2019-01-23T09:47:21.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建属于你的博客">
 <meta name="twitter:description" content="主要使用 Node.js + Hexo + Next + Github ，其实都很简单，在此只是为了记录一下">
@@ -400,7 +400,7 @@
                 
               
 
-              <time title="创建时间：2019-01-23 15:37:41 / 修改时间：17:30:47" itemprop="dateCreated datePublished" datetime="2019-01-23T15:37:41+08:00">2019-01-23</time>
+              <time title="创建时间：2019-01-23 15:37:41 / 修改时间：17:47:21" itemprop="dateCreated datePublished" datetime="2019-01-23T15:37:41+08:00">2019-01-23</time>
             
 
             
@@ -462,6 +462,8 @@
 <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p><code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</code></p>
 <p>如果 deploy 不成功 需要<br><code>npm install hexo-deployer-git --save</code></p>
 <p>每次修改配置文件  都需要在博客所在目录下 <code>hexo generate</code> 才能保存。</p>
+<p>由于 deploy 每次都会覆盖 username.github.io 中的 CNAME<br>所以需要<br><code>npm install hexo-generator-cname --save</code></p>
+<p>README.md 由于会被编译 变成 html ，需要每次重新上传</p>
 <h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><p>使用<br><code>hexo new &quot;博客文章文件名&quot;</code><br>或<br>  新建md文件放到 /source/_posts 文件夹或其子文件夹中，并且文章要按照规定格式书写</p>
 <p>如：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="comment"># 标题</span></span><br><span class="line"><span class="attr">tags:</span>   <span class="comment"># 标签</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">标签名称1</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">标签名称2</span></span><br><span class="line"><span class="attr">categorys:</span>  <span class="comment"># 分类</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">分类1</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">分类2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="预览文章"><a href="#预览文章" class="headerlink" title="预览文章"></a>预览文章</h3><p>清除缓存<br><code>hexo clean</code><br>生成静态网页<br><code>hexo generate</code><br>预览<br><code>hexo server</code></p>

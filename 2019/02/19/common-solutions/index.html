@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="OE2Os7luGe">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?164fe33111c70f8f03e2b53db49ebd49";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="rem适配  ParseUrl dva live2d-widget 等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一些解决方案（链接）- 持续更新">
+<meta property="og:url" content="http://yoursite.com/blog/2019/02/19/common-solutions/index.html">
+<meta property="og:site_name" content="Razio">
+<meta property="og:description" content="rem适配  ParseUrl dva live2d-widget 等">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-26T08:56:39.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录一些解决方案（链接）- 持续更新">
+<meta name="twitter:description" content="rem适配  ParseUrl dva live2d-widget 等">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/2019/02/19/common-solutions/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>记录一些解决方案（链接）- 持续更新 | Razio</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Razio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://tyouzu1.github.io/resume/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-vcard"></i> <br>简历</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/blog/2019/02/19/common-solutions/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Razio">
+      <meta itemprop="description" content="曾梦想仗剑走天涯，看一看世界的繁华">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Razio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记录一些解决方案（链接）- 持续更新
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-19 16:22:09" itemprop="dateCreated datePublished" datetime="2019-02-19T16:22:09+08:00">2019-02-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-26 16:56:39" itemprop="dateModified" datetime="2019-02-26T16:56:39+08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/blog/2019/02/19/common-solutions/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/19/common-solutions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>rem适配  ParseUrl dva live2d-widget 等<br><a id="more"></a></p>
+<h1 id="rem适配"><a href="#rem适配" class="headerlink" title="rem适配"></a>rem适配</h1><p>一般js版本链接<a href="http://caibaojian.com/simple-flexible.html" target="_blank" rel="noopener">http://caibaojian.com/simple-flexible.html</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//designWidth:设计稿的实际宽度值，需要根据实际设置</span></span><br><span class="line"><span class="comment">//maxWidth:制作稿的最大宽度值，需要根据实际设置</span></span><br><span class="line"><span class="comment">//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750)</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">designWidth, maxWidth</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> doc = <span class="built_in">document</span>,</span><br><span class="line">	win = <span class="built_in">window</span>,</span><br><span class="line">	docEl = doc.documentElement,</span><br><span class="line">	remStyle = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>),</span><br><span class="line">	tid;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">refreshRem</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> width = docEl.getBoundingClientRect().width;</span><br><span class="line">		maxWidth = maxWidth || <span class="number">540</span>;</span><br><span class="line">		width&gt;maxWidth &amp;&amp; (width=maxWidth);</span><br><span class="line">		<span class="keyword">var</span> rem = width * <span class="number">100</span> / designWidth;</span><br><span class="line">		remStyle.innerHTML = <span class="string">'html&#123;font-size:'</span> + rem + <span class="string">'px;&#125;'</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (docEl.firstElementChild) &#123;</span><br><span class="line">		docEl.firstElementChild.appendChild(remStyle);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> wrap = doc.createElement(<span class="string">"div"</span>);</span><br><span class="line">		wrap.appendChild(remStyle);</span><br><span class="line">		doc.write(wrap.innerHTML);</span><br><span class="line">		wrap = <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；</span></span><br><span class="line">	refreshRem();</span><br><span class="line"></span><br><span class="line">	win.addEventListener(<span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		clearTimeout(tid); <span class="comment">//防止执行两次</span></span><br><span class="line">		tid = setTimeout(refreshRem, <span class="number">300</span>);</span><br><span class="line">	&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">	win.addEventListener(<span class="string">"pageshow"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (e.persisted) &#123; <span class="comment">// 浏览器后退的时候重新计算</span></span><br><span class="line">			clearTimeout(tid);</span><br><span class="line">			tid = setTimeout(refreshRem, <span class="number">300</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (doc.readyState === <span class="string">"complete"</span>) &#123;</span><br><span class="line">		doc.body.style.fontSize = <span class="string">"16px"</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		doc.addEventListener(<span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">			doc.body.style.fontSize = <span class="string">"16px"</span>;</span><br><span class="line">		&#125;, <span class="literal">false</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="number">750</span>, <span class="number">750</span>);</span><br></pre></td></tr></table></figure></p>
+<p>张鑫旭老师 vw rem 版本 <a href="https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/</a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">375px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">html</span> &#123;</span><br><span class="line">        <span class="comment">/* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */</span></span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(100% + 2 * (100vw - 375px) / <span class="number">39</span>);</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(16px + 2 * (100vw - 375px) / <span class="number">39</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">414px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">html</span> &#123;</span><br><span class="line">        <span class="comment">/* 414px-1000px每100像素宽字体增加1px(18px-22px) */</span></span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(112.5% + 4 * (100vw - 414px) / <span class="number">586</span>);</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(18px + 4 * (100vw - 414px) / <span class="number">586</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">600px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">html</span> &#123;</span><br><span class="line">        <span class="comment">/* 600px-1000px每100像素宽字体增加1px(20px-24px) */</span></span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(125% + 4 * (100vw - 600px) / <span class="number">400</span>);</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(20px + 4 * (100vw - 600px) / <span class="number">400</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">1000px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">html</span> &#123;</span><br><span class="line">        <span class="comment">/* 1000px往后是每100像素0.5px增加 */</span></span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(137.5% + 6 * (100vw - 1000px) / <span class="number">1000</span>);</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="built_in">calc</span>(22px + 6 * (100vw - 1000px) / <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Parse-Url"><a href="#Parse-Url" class="headerlink" title="Parse Url"></a>Parse Url</h1><p>用于格式化Url <a href="https://j11y.io/javascript/parsing-urls-with-the-dom/" target="_blank" rel="noopener">https://j11y.io/javascript/parsing-urls-with-the-dom/</a></p>
+<h2 id="parseURL"><a href="#parseURL" class="headerlink" title="parseURL"></a>parseURL</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This function creates a new anchor element and uses location</span></span><br><span class="line"><span class="comment">// properties (inherent) to get the desired URL data. Some String</span></span><br><span class="line"><span class="comment">// operations are used (to normalize results across browsers).</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseURL</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a =  <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">    a.href = url;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        source: url,</span><br><span class="line">        protocol: a.protocol.replace(<span class="string">':'</span>,<span class="string">''</span>),</span><br><span class="line">        host: a.hostname,</span><br><span class="line">        port: a.port,</span><br><span class="line">        query: a.search,</span><br><span class="line">        params: (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ret = &#123;&#125;,</span><br><span class="line">                seg = a.search.replace(<span class="regexp">/^?/</span>,<span class="string">''</span>).split(<span class="string">'&amp;'</span>),</span><br><span class="line">                len = seg.length, i = <span class="number">0</span>, s;</span><br><span class="line">            <span class="keyword">for</span> (;i&lt;len;i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!seg[i]) &#123; <span class="keyword">continue</span>; &#125;</span><br><span class="line">                s = seg[i].split(<span class="string">'='</span>);</span><br><span class="line">                ret[s[<span class="number">0</span>]] = s[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;)(),</span><br><span class="line">        file: (a.pathname.match(<span class="comment">//([^/?#]+)$/i) || [,''])[1],</span></span><br><span class="line">        hash: a.hash.replace(<span class="string">'#'</span>,<span class="string">''</span>),</span><br><span class="line">        path: a.pathname.replace(<span class="regexp">/^([^/])/</span>,<span class="string">'/$1'</span>),</span><br><span class="line">        relative: (a.href.match(<span class="regexp">/tps?:/</span><span class="regexp">/[^/]+(.+)/</span>) || [,<span class="string">''</span>])[<span class="number">1</span>],</span><br><span class="line">        segments: a.pathname.replace(<span class="regexp">/^/</span><span class="regexp">/,'').split('/</span><span class="string">')</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myURL = parseURL(<span class="string">'http://abc.com:8080/dir/index.html?id=255&amp;m=hello#top'</span>);</span><br><span class="line"> </span><br><span class="line">myURL.file;     <span class="comment">// = 'index.html'</span></span><br><span class="line">myURL.hash;     <span class="comment">// = 'top'</span></span><br><span class="line">myURL.host;     <span class="comment">// = 'abc.com'</span></span><br><span class="line">myURL.query;    <span class="comment">// = '?id=255&amp;m=hello'</span></span><br><span class="line">myURL.params;   <span class="comment">// = Object = &#123; id: 255, m: hello &#125;</span></span><br><span class="line">myURL.path;     <span class="comment">// = '/dir/index.html'</span></span><br><span class="line">myURL.segments; <span class="comment">// = Array = ['dir', 'index.html']</span></span><br><span class="line">myURL.port;     <span class="comment">// = '8080'</span></span><br><span class="line">myURL.protocol; <span class="comment">// = 'http'</span></span><br><span class="line">myURL.source;   <span class="comment">// = 'http://abc.com:8080/dir/index.html?id=255&amp;m=hello#top'</span></span><br></pre></td></tr></table></figure>
+<!-- ## React+Redux 究极进化体
+
+[Dva](https://dvajs.com/)
+[Umi](https://umijs.org/guide/with-dva.html)
+
+再多说一句，React 官网的教程，已经足够详尽、足够学习了。 -->
+<h1 id="live2d-widget-canvas交互"><a href="#live2d-widget-canvas交互" class="headerlink" title="live2d-widget canvas交互"></a>live2d-widget canvas交互</h1><p>live2d-widget 可快速支持hexo <a href="https://github.com/xiazeyu/live2d-widget.js" target="_blank" rel="noopener">https://github.com/xiazeyu/live2d-widget.js</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/02/16/javascript-knowledge-2/" rel="next" title="JavaScript 基础知识（2）—— 浅拷贝 与 深拷贝">
+                <i class="fa fa-chevron-left"></i> JavaScript 基础知识（2）—— 浅拷贝 与 深拷贝
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/02/25/debounce-and-throttle/" rel="prev" title="函数防抖 和 函数节流 （debounce and throttle）">
+                函数防抖 和 函数节流 （debounce and throttle） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Razio</p>
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，看一看世界的繁华</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/tyouzu1" title="GitHub &rarr; https://github.com/tyouzu1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:tyouzu1@163.com" title="E-Mail &rarr; mailto:tyouzu1@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5351899882" title="Weibo &rarr; https://weibo.com/5351899882" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rem适配"><span class="nav-number">1.</span> <span class="nav-text">rem适配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Parse-Url"><span class="nav-number">2.</span> <span class="nav-text">Parse Url</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parseURL"><span class="nav-number">2.1.</span> <span class="nav-text">parseURL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">2.2.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#live2d-widget-canvas交互"><span class="nav-number">3.</span> <span class="nav-text">live2d-widget canvas交互</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Razio</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/blog/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/blog/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/blog/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/blog/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/blog/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/blog/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://tyouzu1-github-io.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/blog/2019/02/19/common-solutions/";
+    this.page.identifier = "2019/02/19/common-solutions/";
+    this.page.title = '记录一些解决方案（链接）- 持续更新';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tyouzu1-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":0.7,"jsonPath":"/blog/live2dw/assets/assets/shizuku.model.json"},"mobile":{"show":false,"scale":0.5},"display":{"position":"left","width":150,"height":300},"log":false});</script></body>
+</html>

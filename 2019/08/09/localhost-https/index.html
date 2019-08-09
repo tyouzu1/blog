@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="OE2Os7luGe">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?164fe33111c70f8f03e2b53db49ebd49";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="最近有新任务，把当前的项目加个 PWA 进来。于是乎，又发现了技术的星辰大海。测试项目在 项目在 github 也可以直接访问 tyouzu1.github.io">
+<meta name="keywords" content="PWA,https,Service Worker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本地（localhost）开发 PWA，使用 https">
+<meta property="og:url" content="http://yoursite.com/blog/2019/08/09/localhost-https/index.html">
+<meta property="og:site_name" content="Razio">
+<meta property="og:description" content="最近有新任务，把当前的项目加个 PWA 进来。于是乎，又发现了技术的星辰大海。测试项目在 项目在 github 也可以直接访问 tyouzu1.github.io">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/install_weibo.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/install_weibo2.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/mac_weibo.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/mac_weibo2.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/mac_weibo3.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/https_error.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/mkcert.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/PWA.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/PWA_error.png">
+<meta property="og:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/PWA_add.png">
+<meta property="og:updated_time" content="2019-08-09T09:59:35.820Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="本地（localhost）开发 PWA，使用 https">
+<meta name="twitter:description" content="最近有新任务，把当前的项目加个 PWA 进来。于是乎，又发现了技术的星辰大海。测试项目在 项目在 github 也可以直接访问 tyouzu1.github.io">
+<meta name="twitter:image" content="http://yoursite.com/blog/2019/08/09/localhost-https/install_weibo.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/2019/08/09/localhost-https/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>本地（localhost）开发 PWA，使用 https | Razio</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Razio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-resume">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="https://tyouzu1.github.io/resume/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-vcard"></i> <br>简历</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/blog/2019/08/09/localhost-https/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Razio">
+      <meta itemprop="description" content="曾梦想仗剑走天涯，看一看世界的繁华">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Razio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">本地（localhost）开发 PWA，使用 https
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-09 13:24:30 / 修改时间：17:59:35" itemprop="dateCreated datePublished" datetime="2019-08-09T13:24:30+08:00">2019-08-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/blog/2019/08/09/localhost-https/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/09/localhost-https/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近有新任务，把当前的项目加个 <strong>PWA</strong> 进来。于是乎，又发现了技术的星辰大海。<br>测试项目在 项目在 <a href="https://github.com/tyouzu1/tyouzu1.github.io" target="_blank" rel="noopener">github</a> 也可以直接访问 <a href="https://tyouzu1.github.io" target="_blank" rel="noopener">tyouzu1.github.io</a></p>
+<a id="more"></a>
+<h1 id="PWA-简介"><a href="#PWA-简介" class="headerlink" title="PWA 简介"></a>PWA 简介</h1><p>先来介绍下 <strong>PWA</strong><br><code>Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用户原生应用的体验。</code></p>
+<h2 id="PWA-的特点"><a href="#PWA-的特点" class="headerlink" title="PWA 的特点"></a>PWA 的特点</h2><ul>
+<li>可靠 - 即使在不稳定的网络环境下，也能瞬间加载并展现</li>
+<li>体验 - 快速响应，并且有平滑的动画响应用户的操作</li>
+<li>粘性 - 像设备上的原生应用，具有沉浸式的用户体验，用户可以添加到桌面</li>
+</ul>
+<h2 id="PWA-表现形式"><a href="#PWA-表现形式" class="headerlink" title="PWA 表现形式"></a>PWA 表现形式</h2><p>可以访问下 <a href="http://m.weibo.cn/" target="_blank" rel="noopener">微博</a> 的 m 站，现在已经支持了 <strong>PWA</strong>。可以添加到桌面。</p>
+<p>如果不能添加，可能是浏览器没有启用相应功能。<br>可以打开 Chrome浏览器的 <code>chrome://flags/</code> 页面。搜索 <code>progressive</code> 打开 <code>Desktop PWAs</code> 功能</p>
+<p>由于我打开后搜索不到了，就不截图了。</p>
+<p>macOs 上可以添加到启动台</p>
+<img src="/blog/2019/08/09/localhost-https/install_weibo.png" title="macOs上安装">
+<img src="/blog/2019/08/09/localhost-https/install_weibo2.png" title="macOs上安装">
+<img src="/blog/2019/08/09/localhost-https/mac_weibo.png" title="macOs上安装">
+<img src="/blog/2019/08/09/localhost-https/mac_weibo2.png" title="macOs上安装">
+<p>打开后如下图，去掉了很多无关的功能，显得非常专业</p>
+<img src="/blog/2019/08/09/localhost-https/mac_weibo3.png" title="macOs上安装">
+<p>具体的 <strong>PWA</strong> 表现形式本文不再赘述。</p>
+<p>具体可以参见 <a href="https://lavas.baidu.com/pwa/README" target="_blank" rel="noopener">lavas</a></p>
+<h1 id="如何使用-PWA"><a href="#如何使用-PWA" class="headerlink" title="如何使用 PWA"></a>如何使用 PWA</h1><h2 id="添加到桌面功能"><a href="#添加到桌面功能" class="headerlink" title="添加到桌面功能"></a>添加到桌面功能</h2><p><strong>PWA</strong> 可以让你的应用能够添加到桌面，并获得更好的用户体验，而且并不仅仅是一个网页快捷方式</p>
+<p>那么如何启用这个功能呢？</p>
+<p>有三要素</p>
+<blockquote>
+<ul>
+<li>正常的 manifest.json</li>
+<li>正常的 Service Worker</li>
+<li>可访问的 HTTPS</li>
+</ul>
+</blockquote>
+<p>只要你的网站添加了这三样，你的应用就能正常使用 <strong>PWA</strong> 的特性了</p>
+<h3 id="manifest-json"><a href="#manifest-json" class="headerlink" title="manifest.json"></a>manifest.json</h3><p>下面是一个 <code>manifest.json</code> 样例<br>具体文档可参见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Manifest" target="_blank" rel="noopener">MDN</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "short_name": "Razio",  // 简短易读的名称</span><br><span class="line">  "name": "这是 Razio 的博客",  // 为应用程序提供一个可读的名称</span><br><span class="line">  "display": "standalone",    //  fullscreen占满整个屏幕。 standalone	浏览器相关UI隐藏 等</span><br><span class="line">  "icons": [  // 指定可在各种环境中用作应用程序图标的图像对象数组</span><br><span class="line">    &#123;</span><br><span class="line">      "src": "https://tyouzu1.github.io/icon_48.png", // 路径</span><br><span class="line">      "type": "image/png", //类型</span><br><span class="line">      "sizes": "48x48"  // 尺寸</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"src"</span>: <span class="string">"https://tyouzu1.github.io/icon_144.png"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"image/png"</span>,</span><br><span class="line">      <span class="attr">"sizes"</span>: <span class="string">"144x144"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"sizes"</span>: <span class="string">"192x192"</span>,</span><br><span class="line">      <span class="attr">"src"</span>: <span class="string">"https://tyouzu1.github.io/icon_192.png"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"sizes"</span>: <span class="string">"512x512"</span>,</span><br><span class="line">      <span class="attr">"src"</span>: <span class="string">"https://tyouzu1.github.io/icon_512.png"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  "start_url": "/" // 加载的URL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，在你的 html 中引入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"/manifest.json"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用 webpack<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WebpackPwaManifest = <span class="built_in">require</span>(<span class="string">'webpack-pwa-manifest'</span>)</span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> WebpackPwaManifest(&#123;</span><br><span class="line">    name: <span class="string">'这是 Razio 的博客'</span>,</span><br><span class="line">    short_name: <span class="string">'Razio'</span>,</span><br><span class="line">    description: <span class="string">'My name is Razio'</span>,</span><br><span class="line">    background_color: <span class="string">'#ffffff'</span>,</span><br><span class="line">    start_url: <span class="string">"/"</span>,</span><br><span class="line">    display: <span class="string">"standalone"</span>,</span><br><span class="line">    icons: [</span><br><span class="line">      &#123;</span><br><span class="line">        src: path.resolve(<span class="string">'src/assets/icon.png'</span>),</span><br><span class="line">        sizes: [<span class="number">48</span>, <span class="number">144</span>, <span class="number">192</span>, <span class="number">512</span>] <span class="comment">// multiple sizes</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>引入 <code>webpack</code> 插件后，会生成 <code>manifest.json</code> 文件，自动打包到 html 中。</p>
+<h3 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h3><h4 id="什么是-Service-Worker"><a href="#什么是-Service-Worker" class="headerlink" title="什么是 Service Worker?"></a>什么是 Service Worker?</h4><p>没啥好说的，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener">MDN</a>，自学吧</p>
+<h4 id="如何建一个简单的-Service-Worker"><a href="#如何建一个简单的-Service-Worker" class="headerlink" title="如何建一个简单的 Service Worker"></a>如何建一个简单的 Service Worker</h4><p><code>sw.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheName = <span class="string">'test-sw-0-1'</span>;</span><br><span class="line"><span class="keyword">var</span> cacheFiles = [</span><br><span class="line">    <span class="string">'/'</span>,</span><br><span class="line">    <span class="string">'./index.html'</span>,</span><br><span class="line">    <span class="comment">// './index.js',</span></span><br><span class="line">    <span class="comment">// './style.css',</span></span><br><span class="line">    <span class="comment">// './img/banner.png',</span></span><br><span class="line">    <span class="comment">// 在这里可以选择缓存文件</span></span><br><span class="line">];</span><br><span class="line"><span class="comment">// 监听 install 事件，安装完成后，进行文件缓存</span></span><br><span class="line">self.addEventListener(<span class="string">'install'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Service Worker 状态： install'</span>);</span><br><span class="line">    <span class="keyword">var</span> cacheOpenPromise = caches.open(cacheName).then(<span class="function"><span class="keyword">function</span> (<span class="params">cache</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 把要缓存的 cacheFiles 列表传入</span></span><br><span class="line">        <span class="keyword">return</span> cache.addAll(cacheFiles);</span><br><span class="line">    &#125;);</span><br><span class="line">    e.waitUntil(cacheOpenPromise);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 监听 fetch 事件，安装完成后，进行文件缓存</span></span><br><span class="line">self.addEventListener(<span class="string">'fetch'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Service Worker 状态： fetch'</span>);</span><br><span class="line">    <span class="keyword">var</span> cacheMatchPromise = caches.match(e.request).then(<span class="function"><span class="keyword">function</span> (<span class="params">cache</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 如果有cache则直接返回，否则通过fetch请求</span></span><br><span class="line">            <span class="keyword">return</span> cache || fetch(e.request);</span><br><span class="line">        &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(err);</span><br><span class="line">            <span class="keyword">return</span> fetch(e.request);</span><br><span class="line">        &#125;)</span><br><span class="line">    e.respondWith(cacheMatchPromise);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 监听 activate 事件，清除缓存</span></span><br><span class="line">self.addEventListener(<span class="string">'activate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Service Worker 状态： activate'</span>);</span><br><span class="line">    <span class="keyword">var</span> cachePromise = caches.keys().then(<span class="function"><span class="keyword">function</span> (<span class="params">keys</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.all(keys.map(<span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (key !== cacheName) &#123;</span><br><span class="line">                <span class="keyword">return</span> caches.delete(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;));</span><br><span class="line">    &#125;)</span><br><span class="line">    e.waitUntil(cachePromise);</span><br><span class="line">    <span class="keyword">return</span> self.clients.claim();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在 html 中调用 <code>sw.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">'serviceWorker'</span> <span class="keyword">in</span> navigator) &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        navigator.serviceWorker.register(<span class="string">'/sw.js'</span>, &#123;<span class="attr">scope</span>: <span class="string">'/'</span>&#125;)</span><br><span class="line">            .then(<span class="function"><span class="keyword">function</span> (<span class="params">registration</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// 注册成功</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'ServiceWorker registration successful with scope: '</span>, registration.scope);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// 注册失败:</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'ServiceWorker registration failed: '</span>, err);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，这里也可以使用 webpack 的 <a href="https://github.com/NekR/offline-plugin" target="_blank" rel="noopener"><code>offline-plugin</code></a> 插件来解决<br>webpack<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> OfflinePlugin = <span class="built_in">require</span>(<span class="string">'offline-plugin'</span>);</span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> OfflinePlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>功能很强大，细节有空再补，具体行为可以参见 <a href="https://github.com/NekR/offline-plugin" target="_blank" rel="noopener"><code>offline-plugin</code></a> 文档</p>
+<h3 id="HTTPS-服务"><a href="#HTTPS-服务" class="headerlink" title="HTTPS 服务"></a>HTTPS 服务</h3><p>在本地调试时，可以利用 <code>webpack</code> 或者 <code>http-server</code> 来启动 https 服务。</p>
+<p>webpack-dev-server<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    https: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>http-server 命令行方式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -S</span><br></pre></td></tr></table></figure></p>
+<p>之后便可以用 https 的方式访问项目，如 <code>https://localhost:8080</code></p>
+<p>可是进来后发现，浏览器认为是不安全的，这也就会导致浏览器不会启用 PWA 的添加应用功能<br><img src="/blog/2019/08/09/localhost-https/https_error.png" title="不安全的HTTPS"></p>
+<p>解决的方法有很多，总的来说就是让本地浏览器忽略当前这个地址从而不检测 https证书，或是伪造成一个安全的证书让浏览器认为它是安全的</p>
+<p>这里采用 <a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a> 来伪造证书。</p>
+<p>使用起来也很方便</p>
+<p>先安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mkcert</span><br></pre></td></tr></table></figure></p>
+<p>其他系统可参照文档 <a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a></p>
+<p>然后使用 mkcert 创建一个证书，mkcert 会自动将其插入到证书库中并信任。<br>在 MACOS 中是在钥匙串中<br><img src="/blog/2019/08/09/localhost-https/mkcert.png" title="钥匙串"></p>
+<p>然后使用 mkcert + [输入需要证书的地址] 生成 key 和 cert<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkcert localhost 127.0.0.1</span><br></pre></td></tr></table></figure></p>
+<p>然后通过 webpack 启动<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> devServer: &#123;</span><br><span class="line">    https: &#123;</span><br><span class="line">        key: fs.readFileSync(<span class="string">'path/to/localhost+1-key.pem'</span>),</span><br><span class="line">        cert: fs.readFileSync(<span class="string">'path/to/localhost+1.pem'</span>),</span><br><span class="line">        ca: fs.readFileSync(<span class="string">'/Users/YOUR/Library/Application Support/mkcert/rootCA.pem'</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者使用 http-server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -S -C localhost+1.pem -K localhost+1-key.pem</span><br></pre></td></tr></table></figure></p>
+<p>接下来 访问你本地的地址，浏览器就能正确识别到HTTPS了。</p>
+<p>再来看一下三要素</p>
+<blockquote>
+<ul>
+<li>正常的 manifest.json</li>
+<li>正常的 Service Worker</li>
+<li>可访问的 HTTPS</li>
+</ul>
+</blockquote>
+<p>现在三要素已经完成，你的应用应该也能正常使用 PWA 的特性了。</p>
+<p>现在可以打开最新的 Chrome 浏览器，进入项目地址，打开控制台 Application 。</p>
+<img src="/blog/2019/08/09/localhost-https/PWA.png" title="pwa">
+<p>有时会会有一些错误信息，这大概率都是因为你的 <code>manifest.json</code> 信息填写不正确，或是图片资源有问题等。进行相应修改即可</p>
+<img src="/blog/2019/08/09/localhost-https/PWA_error.png" title="pwa报错">
+<p>在满足三要素，一切正常后，url输入栏 也会相应多出来一个按钮，这时，你的 PWA 应用基本上就可以正常添加到主屏幕了。</p>
+<img src="/blog/2019/08/09/localhost-https/PWA_add.png" title="安装pwa">
+<p>然后就可以向上文中的微博一样添加到主屏幕啦，使用 Service Worker 缓存的功能有机会再写</p>
+<p>项目在 <a href="https://github.com/tyouzu1/tyouzu1.github.io" target="_blank" rel="noopener">github</a> 也可以直接访问 <a href="https://tyouzu1.github.io" target="_blank" rel="noopener">tyouzu1.github.io</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/PWA/" rel="tag"># PWA</a>
+          
+            <a href="/blog/tags/https/" rel="tag"># https</a>
+          
+            <a href="/blog/tags/Service-Worker/" rel="tag"># Service Worker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/07/15/note-7-15-position-sticky/" rel="next" title="日常笔记/19-7-15/position-sticky使用问题">
+                <i class="fa fa-chevron-left"></i> 日常笔记/19-7-15/position-sticky使用问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Razio</p>
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，看一看世界的繁华</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/tyouzu1" title="GitHub &rarr; https://github.com/tyouzu1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:tyouzu1@163.com" title="E-Mail &rarr; mailto:tyouzu1@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/5351899882" title="Weibo &rarr; https://weibo.com/5351899882" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PWA-简介"><span class="nav-number">1.</span> <span class="nav-text">PWA 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA-的特点"><span class="nav-number">1.1.</span> <span class="nav-text">PWA 的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA-表现形式"><span class="nav-number">1.2.</span> <span class="nav-text">PWA 表现形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用-PWA"><span class="nav-number">2.</span> <span class="nav-text">如何使用 PWA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加到桌面功能"><span class="nav-number">2.1.</span> <span class="nav-text">添加到桌面功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#manifest-json"><span class="nav-number">2.1.1.</span> <span class="nav-text">manifest.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-Worker"><span class="nav-number">2.1.2.</span> <span class="nav-text">Service Worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-Service-Worker"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">什么是 Service Worker?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何建一个简单的-Service-Worker"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">如何建一个简单的 Service Worker</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS-服务"><span class="nav-number">2.1.3.</span> <span class="nav-text">HTTPS 服务</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Razio</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/blog/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/blog/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/blog/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/blog/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/blog/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/blog/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://tyouzu1-github-io.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/blog/2019/08/09/localhost-https/";
+    this.page.identifier = "2019/08/09/localhost-https/";
+    this.page.title = '本地（localhost）开发 PWA，使用 https';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tyouzu1-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":0.7,"jsonPath":"/blog/live2dw/assets/assets/shizuku.model.json"},"mobile":{"show":false,"scale":0.5},"display":{"position":"left","width":150,"height":300},"log":false});</script></body>
+</html>

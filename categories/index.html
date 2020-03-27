@@ -386,6 +386,33 @@ var _hmt = _hmt || [];
   
 
 
+<div class="switch-box">
+  <input 0="" id="checked_1" type="checkbox" class="switch" value="0">
+  <label for="checked_1">
+  <script>
+  (function(){
+    var dark = document.getElementById('checked_1')
+    var theme = window.localStorage.getItem('theme')
+    var darkMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    function darkModeListener() {
+      console.log(darkMedia.matches)
+      dark.checked = !!darkMedia.matches
+    }
+    darkMedia.addListener(darkModeListener)
+    if(theme==='dark'){
+      dark.checked = true
+    }else if(theme==='light'){
+      dark.checked = false
+    }else {
+      darkModeListener()
+    }
+    dark.onclick = (e)=>{window.localStorage.setItem('theme',e.target.checked ? 'dark' : 'light')}
+  })()
+  </script>
+    <dark-bg></dark-bg>
+    <dark-mode></dark-mode>
+  </label>
+</div>
 
 </div>
     </header>
@@ -446,7 +473,7 @@ var _hmt = _hmt || [];
               目前共计 3 个分类
             </div>
             <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript-基础知识/">JavaScript 基础知识</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/日常笔记/">日常笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/简易实现一个-Vue/">简易实现一个 Vue</a><span class="category-list-count">2</span></li></ul>
+              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript-基础知识/">JavaScript 基础知识</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/日常笔记/">日常笔记</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/简易实现一个-Vue/">简易实现一个 Vue</a><span class="category-list-count">2</span></li></ul>
             </div>
           </div>
         
@@ -505,7 +532,7 @@ var _hmt = _hmt || [];
                 
                   <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

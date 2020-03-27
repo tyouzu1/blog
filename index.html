@@ -358,6 +358,33 @@ var _hmt = _hmt || [];
   
 
 
+<div class="switch-box">
+  <input 0="" id="checked_1" type="checkbox" class="switch" value="0">
+  <label for="checked_1">
+  <script>
+  (function(){
+    var dark = document.getElementById('checked_1')
+    var theme = window.localStorage.getItem('theme')
+    var darkMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    function darkModeListener() {
+      console.log(darkMedia.matches)
+      dark.checked = !!darkMedia.matches
+    }
+    darkMedia.addListener(darkModeListener)
+    if(theme==='dark'){
+      dark.checked = true
+    }else if(theme==='light'){
+      dark.checked = false
+    }else {
+      darkModeListener()
+    }
+    dark.onclick = (e)=>{window.localStorage.setItem('theme',e.target.checked ? 'dark' : 'light')}
+  })()
+  </script>
+    <dark-bg></dark-bg>
+    <dark-mode></dark-mode>
+  </label>
+</div>
 
 </div>
     </header>
@@ -372,6 +399,185 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/blog/2020/03/27/dark-mode/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Razio">
+      <meta itemprop="description" content="曾梦想仗剑走天涯，看一看世界的繁华">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Razio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2020/03/27/dark-mode/" class="post-title-link" itemprop="url">日常笔记/Dark Mode</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-27 16:04:02 / 修改时间：18:53:04" itemprop="dateCreated datePublished" datetime="2020-03-27T16:04:02+08:00">2020-03-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/日常笔记/" itemprop="url" rel="index"><span itemprop="name">日常笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/blog/2020/03/27/dark-mode/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/27/dark-mode/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>没想到连傲娇不羁的微信，都已经屈服于 Apple 爸爸的霸权，开始支持<code>Dark Mode</code>。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2020/03/27/dark-mode/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -641,7 +847,7 @@ var _hmt = _hmt || [];
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-20 15:15:13" itemprop="dateModified" datetime="2020-03-20T15:15:13+08:00">2020-03-20</time>
+                <time title="修改时间：2020-03-27 14:00:49" itemprop="dateModified" datetime="2020-03-27T14:00:49+08:00">2020-03-27</time>
               
             
           </span>
@@ -706,11 +912,8 @@ var _hmt = _hmt || [];
 
       
         
-          <p>在开发中遇到了这样的问题：（使用 redux 和 saga）</p>
-<ul>
-<li>每建一个新的页面，需要增加一个 reducer 和 saga 文件。</li>
-<li>每个 reducer 中需要定义一个独立的 namespace 。</li>
-<li>每个 reducer 和 saga 文件都需要在入口文件中引入，不然等于无效。
+          <p>在开发中经常会遇到这样的问题：每次在当前目录下增加一个新的文件，需要在入口文件 index.js 中引入<br>比如这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'./A'</span>;</span><br><span class="line"><span class="keyword">import</span> B <span class="keyword">from</span> <span class="string">'./B'</span>;</span><br><span class="line"><span class="keyword">import</span> C <span class="keyword">from</span> <span class="string">'./C'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  A,</span><br><span class="line">  B,</span><br><span class="line">  C,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每次加一个文件，都需要在入口文件中引用，如果忘记了，肯定会出现问题，那么该如何在项目中，自动的引入这些琐碎的文件呢？<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -722,7 +925,7 @@ var _hmt = _hmt || [];
           <!--/noindex-->
         
       
-    </li></ul></div>
+    </p></div>
 
     
 
@@ -2047,179 +2250,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/blog/2019/02/25/debounce-and-throttle/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Razio">
-      <meta itemprop="description" content="曾梦想仗剑走天涯，看一看世界的繁华">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Razio">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2019/02/25/debounce-and-throttle/" class="post-title-link" itemprop="url">函数防抖 和 函数节流 （debounce and throttle）</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-25 17:34:58" itemprop="dateCreated datePublished" datetime="2019-02-25T17:34:58+08:00">2019-02-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-26 17:21:17" itemprop="dateModified" datetime="2019-02-26T17:21:17+08:00">2019-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/blog/2019/02/25/debounce-and-throttle/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/25/debounce-and-throttle/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在前端开发过程中，我们经常会绑定一些事件，例如click、resize、scroll事件，但是这些事件无法控制触发频率，甚至如果用户不停的点击按钮，click事件也会频繁的触发，事件的触发频率变高之后，响应速度也会下降，更可能出现出现页面卡顿，假死现象。<br>针对这种问题，有两种解决策略，也就是 函数防抖 和 函数节流 （debounce and throttle）<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2019/02/25/debounce-and-throttle/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2269,7 +2299,7 @@ var _hmt = _hmt || [];
                 
                   <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

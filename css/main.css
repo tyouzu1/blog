@@ -1367,6 +1367,11 @@ dark-bg {
 .switch-box .switch:checked~label {
   --bg: var(--dark);
 }
+@media (max-width: 767px) {
+  .switch-box {
+    right: 20px;
+  }
+}
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1985,7 +1990,7 @@ dark-bg {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffb891;
+  background: #91d0ff;
 }
 .links-of-blogroll {
   font-size: 13px;

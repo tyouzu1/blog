@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Razio">
 <meta property="og:description" content="没想到连傲娇不羁的微信，都已经屈服于 Apple 爸爸的霸权，开始支持Dark Mode。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-30T07:43:59.662Z">
+<meta property="og:updated_time" content="2020-03-30T07:55:10.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常笔记&#x2F;Dark Mode">
 <meta name="twitter:description" content="没想到连傲娇不羁的微信，都已经屈服于 Apple 爸爸的霸权，开始支持Dark Mode。">
@@ -357,7 +357,7 @@
 
 
 <div class="switch-box">
-  <input 0="" id="checked_1" type="checkbox" class="switch" value="0">
+  <input id="checked_1" type="checkbox" class="switch" value="0">
   <label for="checked_1">
   <script>
   (function(){
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-30 15:43:59" itemprop="dateModified" datetime="2020-03-30T15:43:59+08:00">2020-03-30</time>
+                <time title="修改时间：2020-03-30 15:55:10" itemprop="dateModified" datetime="2020-03-30T15:55:10+08:00">2020-03-30</time>
               
             
           </span>
@@ -558,7 +558,8 @@
 <h2 id="meta-中可以支持："><a href="#meta-中可以支持：" class="headerlink" title="meta 中可以支持："></a>meta 中可以支持：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"light dark"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"dark"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"light"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="css-中可以支持："><a href="#css-中可以支持：" class="headerlink" title="css 中可以支持："></a>css 中可以支持：</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: light dark;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: dark;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: light;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><p>我在<a href="https://tyouzu1.github.io/blog" target="_blank" rel="noopener">博客</a>中加了个 switch 按钮，用来切换 <code>dark mode</code>。</p>
-<p>写的时候突然脑洞大开，利用<code>mix-blend-mode</code>，做了一个反色的背景版。如果整体配色合适的话，用<code>mix-blend-mode</code>也许能够刚刚好配合出一个新的主题呢。当然，也一定要小心谨慎，因为<code>mix-blend-mode</code>会覆盖当前层级的所有展示，也许会影响你文中的图片展示。</p>
+<p>写的时候突然脑洞大开，利用<code>mix-blend-mode</code>，做了一个反色的背景版。如果整体配色合适的话，用<code>mix-blend-mode</code>也许能够刚刚好配合出一个新的主题呢。甚至可以利用<code>mix-blend-mode</code>来做一些特效，比如 可以写个动画，由小圆扩散为全屏幕、由左扩散到右的反色滤镜，很多网站都有这样的设计。</p>
+<p>当然，也一定要小心谨慎，因为<code>mix-blend-mode</code>会覆盖当前层级的所有展示，也许会影响你文中的图片展示。</p>
 <p>回到主题，在知道如何判定dark模式之后，只需要根据不通模式，区分一下样式即可。</p>
 <p>比如可以利用 <code>@media (prefers-color-scheme: dark)</code>来区分dark模式，修改需要改动的样式或者 css 变量。</p>
 <p>但是由于是使用 media 来自动切换，如果需要支持手动修改主题，也就变得更麻烦。所以如果要支持手动切换主题的话，更适合使用动态修改标签类名等功能（如 body、body.dark等 ）来进行切换。</p>

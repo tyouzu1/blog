@@ -362,10 +362,10 @@
   <script>
   (function(){
     var dark = document.getElementById('checked_1')
+    var body = document.body
     var theme = window.localStorage.getItem('theme')
     var darkMedia = window.matchMedia('(prefers-color-scheme: dark)')
     function darkModeListener() {
-      console.log(darkMedia.matches)
       dark.checked = !!darkMedia.matches
     }
     darkMedia.addListener(darkModeListener)
@@ -376,7 +376,18 @@
     }else {
       darkModeListener()
     }
-    dark.onclick = (e)=>{window.localStorage.setItem('theme',e.target.checked ? 'dark' : 'light')}
+    bodyDarkToggle(dark.checked)
+    dark.onclick = (e)=>{
+      window.localStorage.setItem('theme',e.target.checked ? 'dark' : 'light')
+      bodyDarkToggle(e.target.checked)
+    }
+    function bodyDarkToggle(checked){
+      if(checked){
+        body.classList.add('dark') 
+      }else {
+       body.classList.remove('dark')
+      }
+    }
   })()
   </script>
     <dark-bg></dark-bg>
@@ -475,7 +486,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-30 14:24:05" itemprop="dateModified" datetime="2020-03-30T14:24:05+08:00">2020-03-30</time>
+                <time title="修改时间：2020-03-30 15:43:59" itemprop="dateModified" datetime="2020-03-30T15:43:59+08:00">2020-03-30</time>
               
             
           </span>

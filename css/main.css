@@ -327,6 +327,7 @@ span.exturl {
 a:hover,
 span.exturl:hover {
   color: #222;
+  color: var(--linkHover);
   border-bottom-color: #222;
 }
 blockquote {
@@ -1103,6 +1104,7 @@ pre .javascript .function {
 }
 .tag-cloud a:hover {
   color: #222 !important;
+  color: var(--linkHover) !important;
 }
 .back-to-top {
   box-sizing: border-box;
@@ -1274,12 +1276,21 @@ pre .javascript .function {
 :root {
   --dark: #dcdcdc;
   --light: transparent;
-  --bg: var(--light);
   color-scheme: light dark;
+}
+:root body:not(.dark) {
+  --bg: var(--light);
+  --linkHover: #222;
+  --light: transparent;
+}
+:root body.dark {
+  --bg: var(--dark);
+  --linkHover: #fff;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: var(--dark);
+    --linkHover: #fff;
   }
 }
 dark-mode,
@@ -1990,7 +2001,7 @@ dark-bg {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #91d0ff;
+  background: #ab6c5e;
 }
 .links-of-blogroll {
   font-size: 13px;

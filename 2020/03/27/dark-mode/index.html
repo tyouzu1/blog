@@ -102,7 +102,7 @@
   <meta name="description" content="没想到连傲娇不羁的微信，都已经屈服于 Apple 爸爸的霸权，开始支持Dark Mode。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日常笔记&#x2F;Dark Mode">
-<meta property="og:url" content="http://yoursite.com/blog/2020/03/27/dark-mode/index.html">
+<meta property="og:url" content="https://tyouzu1.github.io/blog/2020/03/27/dark-mode/index.html">
 <meta property="og:site_name" content="Razio">
 <meta property="og:description" content="没想到连傲娇不羁的微信，都已经屈服于 Apple 爸爸的霸权，开始支持Dark Mode。">
 <meta property="og:locale" content="zh-CN">
@@ -116,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/2020/03/27/dark-mode/">
+  <link rel="canonical" href="https://tyouzu1.github.io/blog/2020/03/27/dark-mode/">
 
 
 
@@ -317,7 +317,7 @@
 
     
 
-    <a href="https://tyouzu1.github.io/resume/" rel="noopener" target="_blank"><i class="menu-item-icon fa fa-fw fa-vcard"></i> <br>简历</a>
+    <a href="https://tyouzu1.github.io/resume/" rel="section"><i class="menu-item-icon fa fa-fw fa-vcard"></i> <br>简历</a>
 
   </li>
         
@@ -424,7 +424,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/blog/2020/03/27/dark-mode/">
+    <link itemprop="mainEntityOfPage" href="https://tyouzu1.github.io/blog/blog/2020/03/27/dark-mode/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Razio">
@@ -557,7 +557,7 @@
 <h1 id="浏览器-dark"><a href="#浏览器-dark" class="headerlink" title="浏览器 dark"></a>浏览器 dark</h1><p>虽然页面中识别了 dark 模式，但是浏览器本身可能也有 dark 的机制。所以，你可以在 html 中使用 <code>meta</code> 和 <code>css</code> 通知浏览器，告诉他你支持哪些模式，用来触发浏览器的 dark 机制（具体的机制要看了浏览器了）。</p>
 <h2 id="meta-中可以支持："><a href="#meta-中可以支持：" class="headerlink" title="meta 中可以支持："></a>meta 中可以支持：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"light dark"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"dark"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"color-scheme"</span> <span class="attr">content</span>=<span class="string">"light"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="css-中可以支持："><a href="#css-中可以支持：" class="headerlink" title="css 中可以支持："></a>css 中可以支持：</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: light dark;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: dark;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">color-scheme</span>: light;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><p>我在<a href="https://tyouzu1.github.io/blog" target="_blank" rel="noopener">博客</a>中加了个 switch 按钮，用来切换 <code>dark mode</code>。</p>
+<h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><p>我在<a href="https://tyouzu1.github.io/blog">博客</a>中加了个 switch 按钮，用来切换 <code>dark mode</code>。</p>
 <p>写的时候突然脑洞大开，利用<code>mix-blend-mode</code>，做了一个反色的背景版。如果整体配色合适的话，用<code>mix-blend-mode</code>也许能够刚刚好配合出一个新的主题呢。甚至可以利用<code>mix-blend-mode</code>来做一些特效，比如 可以写个动画，由小圆扩散为全屏幕、由左扩散到右的反色滤镜，很多网站都有这样的设计。</p>
 <p>当然，也一定要小心谨慎，因为<code>mix-blend-mode</code>会覆盖当前层级的所有展示，也许会影响你文中的图片展示。</p>
 <p>回到主题，在知道如何判定dark模式之后，只需要根据不通模式，区分一下样式即可。</p>
@@ -972,7 +972,7 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/blog/2020/03/27/dark-mode/";
+    this.page.url = "https://tyouzu1.github.io/blog/2020/03/27/dark-mode/";
     this.page.identifier = "2020/03/27/dark-mode/";
     this.page.title = '日常笔记/Dark Mode';
     };
